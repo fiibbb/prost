@@ -218,7 +218,7 @@ impl<'a> CodeGenerator<'a> {
         self.buf.push_str("}\n");
 
         if !message.enum_type.is_empty() || !nested_types.is_empty() || !oneof_fields.is_empty() {
-            self.push_mod(&message_name);
+            self.push_mod(&format!("{}_nested", &message_name));
             self.path.push(3);
             for (nested_type, idx) in nested_types {
                 self.path.push(idx as i32);
